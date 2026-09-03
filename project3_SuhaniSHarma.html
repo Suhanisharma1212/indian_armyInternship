@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Defence Content Bank V3</title>
+<style>
+body{margin:0;font-family:Segoe UI,sans-serif;background:#172015;color:white}
+header{background:#24301d;padding:25px;text-align:center;border-bottom:3px solid #caa64b}
+h1,h2,h3{color:#caa64b}
+.container{max-width:1300px;margin:auto;padding:20px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}
+.stat,.card{background:#24301d;padding:18px;border-radius:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+input,select,button{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:none}
+button{background:#caa64b;font-weight:bold}
+.output{background:#0f120d;padding:15px;border-radius:10px;white-space:pre-wrap;min-height:80px}
+.calendar{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
+footer{text-align:center;padding:25px;background:#0d0d0d;margin-top:20px}
+</style>
+</head>
+<body>
+<header>
+<h1>DEFENCE CONTENT BANK V3</h1>
+<p>Suhani Sharma | HQ Southern Command Internship</p>
+</header>
+
+<div class="container">
+
+<div class="stats">
+<div class="stat"><h3>100+</h3>Captions</div>
+<div class="stat"><h3>50+</h3>Reel Scripts</div>
+<div class="stat"><h3>200+</h3>Hashtags</div>
+<div class="stat"><h3>30</h3>Day Calendar</div>
+<div class="stat"><h3>20+</h3>Campaign Kits</div>
+</div>
+
+<div class="card">
+<h2>Search Content</h2>
+<input id="search" placeholder="Search CDS, AI, Deepfake, Veteran...">
+<div id="searchOut" class="output">Search results will appear here.</div>
+</div>
+
+<div class="grid">
+<div class="card">
+<h2>Hashtag Generator</h2>
+<select id="cat">
+<option>Recruitment</option>
+<option>Information Warfare</option>
+<option>Technology</option>
+<option>Human Stories</option>
+</select>
+<button onclick="hashtags()">Generate</button>
+<div id="hash" class="output"></div>
+</div>
+
+<div class="card">
+<h2>Caption Generator</h2>
+<select id="capTopic">
+<option>CDS</option>
+<option>Deepfake</option>
+<option>AI</option>
+<option>Veteran</option>
+</select>
+<button onclick="caption()">Generate</button>
+<div id="cap" class="output"></div>
+<button onclick="copyDiv('cap')">Copy Caption</button>
+</div>
+</div>
+
+<div class="card">
+<h2>Reel Script Generator</h2>
+<select id="reelTopic">
+<option>CDS</option>
+<option>Deepfake</option>
+<option>AI</option>
+<option>Leadership</option>
+</select>
+<button onclick="reel()">Generate</button>
+<div id="script" class="output"></div>
+<button onclick="copyDiv('script')">Copy Script</button>
+</div>
+
+<h2>30-Day Operational Content Calendar</h2>
+<div class="calendar">
+<div class="card"><h3>Week 1</h3>🪖 Agniveer<br>🤖 AI Surveillance<br>🎖 Soldier Story<br>🛡 Deepfake Awareness<br>📊 Quiz</div>
+<div class="card"><h3>Week 2</h3>🎓 NCC Entry<br>🚁 Drones<br>🎖 Veteran Story<br>📰 Fake News<br>⚙ TES Entry</div>
+<div class="card"><h3>Week 3</h3>📚 CDS Roadmap<br>🔐 Cyber Security<br>👨‍👩‍👧 Military Families<br>🌐 OSINT<br>📜 History Trivia</div>
+<div class="card"><h3>Week 4</h3>⭐ Officer Career Path<br>🧠 AI Command Systems<br>🏅 Leadership Lessons<br>📱 Digital Hygiene<br>📈 Review</div>
+</div>
+
+<div class="card">
+<h2>Mission Objective</h2>
+✓ Consistent Content Publishing<br>
+✓ Strategic Information Dissemination<br>
+✓ Recruitment Outreach Support<br>
+✓ Information Warfare Awareness<br>
+✓ Public Engagement
+</div>
+
+</div>
+
+<footer>
+Developed By Suhani Sharma<br>
+Bharati Vidyapeeth College of Engineering Pune
+</footer>
+
+<script>
+const searchData={
+"cds":"CDS Roadmap, Officer Career, Recruitment Content",
+"deepfake":"Deepfake Awareness, Fake News Detection, Information Warfare",
+"ai":"AI in Defence, AI Command Systems, Border Surveillance",
+"veteran":"Veteran Stories, Human Stories, Leadership"
+};
+
+document.getElementById('search').addEventListener('keyup',function(){
+ let q=this.value.toLowerCase();
+ document.getElementById('searchOut').innerText=searchData[q]||"No exact match found.";
+});
+
+function hashtags(){
+const d={
+"Recruitment":"#IndianArmy #CDS #NCC #SSCTech #Agniveer #ArmyOfficer #ServeTheNation",
+"Information Warfare":"#CyberSecurity #DeepfakeAwareness #OSINT #DigitalSafety #InfoWarfare",
+"Technology":"#AI #DefenceTechnology #Drones #MilitaryInnovation #FutureWarfare",
+"Human Stories":"#SoldierStories #Veterans #Leadership #ServiceBeforeSelf #MilitaryFamilies"
+};
+hash.innerText=d[cat.value];
+}
+function caption(){
+const d={
+"CDS":"Dreaming of leading from the front? CDS offers a pathway to become an officer in the Indian Army.",
+"Deepfake":"Not every video online is authentic. Verify before sharing and stay alert against manipulated content.",
+"AI":"Artificial Intelligence is transforming defence through faster decisions and enhanced situational awareness.",
+"Veteran":"Every veteran carries a story of service and sacrifice that inspires future generations."
+};
+cap.innerText=d[capTopic.value];
+}
+function reel(){
+const d={
+"CDS":"HOOK: Want to become an Army Officer?\nBODY: Learn the CDS pathway.\nCTA: Follow for defence careers.",
+"Deepfake":"HOOK: Can you spot a deepfake?\nBODY: Learn warning signs.\nCTA: Verify before sharing.",
+"AI":"HOOK: Can AI change warfare?\nBODY: AI supports surveillance and decisions.\nCTA: Explore defence tech.",
+"Leadership":"HOOK: What makes a great leader?\nBODY: Integrity and responsibility.\nCTA: Share your thoughts."
+};
+script.innerText=d[reelTopic.value];
+}
+function copyDiv(id){
+navigator.clipboard.writeText(document.getElementById(id).innerText);
+alert("Copied!");
+}
+</script>
+</body>
+</html>
